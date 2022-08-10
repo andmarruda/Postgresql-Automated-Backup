@@ -1,13 +1,14 @@
 #!/bin/bash
 
-hostname="localhost"
-port=5432
-username="postgres"
-filepath="/var/pg_automacao/backup"
-filebasename="backup"
-database="db1"
-backup_number_keep=5
+backup_path="/var/pg_automacao_2/"
+file_keep=5
 
-find $filepath/*.backup -type f -mtime +$backup_number_keep -exec rm -v {} \;
+host=$1
+port=$2
+database=$3
+username=$4
+pg_version=$5
 
-/usr/lib/postgresql/10/bin/pg_dump --host "$hostname" --port "$port" --username $username --no-password --format tar --blobs --verbose --no-owner --file "$filepath/$filebasename-$(/bin/date "+%d-%m-%Y").backup" "$database"
+find $filepath/*.backup -type f -mtime +$file_keep -exec rm -v {} \;
+
+/usr/lib/postgresql/10/bin/pg_dump --host "$host" --port "$port" --username $username --no-password --format tar --blobs --verbose --no-owner --file "$backup_path/$database-$(/bin/date "+%Y-%m-%d").backup" "$database"
