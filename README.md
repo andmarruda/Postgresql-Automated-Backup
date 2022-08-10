@@ -4,16 +4,17 @@ English Version
 
 Developed and tested on Distro debian.
 
-/usr/lib/postgresql/10/bin/ is the path of postgresql's bin folder
+/usr/lib/postgresql/$pg_version/bin/ is the path of postgresql's bin folder
+You can use the parameter number 5 into shell to chooser your postgres's version.
 
 SH Attributes:
-hostname = represent the tcp/ip or hostname where the database is
+host = represent the tcp/ip or hostname where the database is
 port = represents the open port of postgresql. You can verify the open port in /etc/postgresql/10/main/postgresql.conf on attribute port.
 username = represents the username who will connect to make the dump. "For security reasons it is not recommended to keep the postgres user active"
-filepath = represents the path where the dump will create the backup file
-filebasename = represents the base name of backup file
+backup_path = represents the path where the dump will create the backup file
 database = represents the database name
-backup_number_keep = the number of backup to keep
+file_keep = the number of backup to keep
+pg_version = the version of your postgresql
 
 -- host see attribute hostname right up
 -- port see attribute port right up
@@ -46,9 +47,9 @@ dow = day of week
 command = command that you want to execute
 
 Exemplo:
-0 23 * * * sudo /var/pg_automacao/backup/automated_backup.sh > /var/pg_automacao/backup/automated_backup.log 2>&1
+0 23 * * * sudo /var/pg_automacao_2/automated_backup.sh 127.0.0.1 5432 dbname postgres 15 > /var/pg_automacao/backup/automated_backup.log 2>&1
 
-"/var/pg_automacao/backup/" = path where  you save the file .sh
+"/var/pg_automacao_2/" = path where  you save the file .sh
 
 Versão em português
 
@@ -57,13 +58,13 @@ Desenvolvido e testado na Distro Debian.
 /usr/lib/postgresql/10/bin/ é caminho da pasta bin do postgresql.
 
 SH Attributes:
-hostname = representa o tcp/ip ou o hostname onde está o banco de dados
+host = representa o tcp/ip ou o hostname onde está o banco de dados
 port = representa a porta aberta do postgresql. Você verificar a porta aberta em /etc/postgresql/10/main/postgresql.conf no atributo port.
 username = representa o nome do usuário que irá se conectar para fazer o dump
-filepath = é o caminho onde o dump criará o arquivo de backup.
-filebasename = é o nome base do arquivo de backup.
+backup_path = é o caminho onde o dump criará o arquivo de backup.
 database = é o nome do banco de dados.
-backup_number_keep = o número de backup a ser mantido.
+file_keep = o número de backup a ser mantido.
+pg_version = a versão do postgres que será executado o backup.
 
 -- host veja o atributo hostname logo acima
 -- port veja o atributo port logo acima
@@ -76,7 +77,7 @@ backup_number_keep = o número de backup a ser mantido.
 -- file é o arquivo que o dump criará para realizar o backup
 -- após o --file temos "$database" nesse espaço você coloca o nome correto de seu próprio banco de dados
 
-O nome do arquivo será criado parecido com isso "backup-dd-mm-yyyy.backup" Exemplo: "backup-30-01-2018.backup"
+O nome do arquivo será criado parecido com isso "backup-yyyy-mm-dd.backup" Exemplo: "backup-2022-08-10.backup"
 
 Se você quiser saber mais sobre dump veja este link: "https://www.postgresql.org/docs/current/static/app-pgdump.html"
 
@@ -97,6 +98,6 @@ dow = dia da semana
 command = comando que você quer executar.
 
 Exemplo:
-0 23 * * * sudo /var/pg_automacao/backup/automated_backup.sh > /var/pg_automacao/backup/automated_backup.log 2>&1
+0 23 * * * sudo /var/pg_automacao_2/automated_backup.sh 127.0.0.1 5432 dbname postgres 15 > /var/pg_automacao/backup/automated_backup.log 2>&1
 
-"/var/pg_automacao/backup/" = path onde salvou seu sh.
+"/var/pg_automacao_2/" = path onde salvou seu sh.
