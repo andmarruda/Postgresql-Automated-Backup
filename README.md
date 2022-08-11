@@ -47,7 +47,7 @@ dow = day of week
 command = command that you want to execute
 
 Exemplo:
-0 23 * * * sudo /var/pg_automacao_2/automated_backup.sh 127.0.0.1 5432 dbname postgres 15 > /var/pg_automacao/backup/automated_backup.log 2>&1
+0 23 * * * sudo /var/pg_automacao_2/automated_backup.sh 127.0.0.1 5432 dbname postgres > /var/pg_automacao/backup/automated_backup.log 2>&1
 
 "/var/pg_automacao_2/" = path where  you save the file .sh
 
@@ -98,6 +98,6 @@ dow = dia da semana
 command = comando que você quer executar.
 
 Exemplo:
-0 23 * * * sudo /var/pg_automacao_2/automated_backup.sh 127.0.0.1 5432 dbname postgres 15 > /var/pg_automacao/backup/automated_backup.log 2>&1
+0 23 * * * sudo /var/pg_automacao_2/automated_backup.sh 127.0.0.1 5432 dbname postgres > /var/pg_automacao/backup/automated_backup.log 2>&1
 
 "/var/pg_automacao_2/" = path onde salvou seu sh.
